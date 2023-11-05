@@ -3,11 +3,12 @@
   "displayName": "Triplate ext for univ fes",
   "version": "0.0.1",
   "description": "A basic Plasmo extension.",
-  "author": "Uplim <uplim.info@gmail.com>",
+  "author": "Uplim. <uplim.info@gmail.com>",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
-    "test": "plasmo test"
+    "package": "plasmo package",
+    "format": "prettier -w src"
   },
   "dependencies": {
     "plasmo": "0.83.0",
@@ -20,12 +21,18 @@
     "@types/node": "20.5.9",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.1.0",
     "prettier": "3.0.3",
+    "tailwindcss": "^3.3.5",
     "typescript": "5.2.2"
   },
   "manifest": {
     "host_permissions": [
       "https://*/*"
+    ],
+    "permissions": [
+      "tabs"
     ]
   }
 }
