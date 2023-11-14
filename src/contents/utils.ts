@@ -1,18 +1,3 @@
-export async function observeDomChanges<T extends Element>(
-  query: string,
-  callback: (target: T) => void
-) {
-  const target = await waitQuerySelector<T>(query)
-
-  const observer = new MutationObserver((_records) => {
-    callback(target)
-  })
-
-  observer.observe(target, {
-    attributes: true
-  })
-}
-
 export async function waitQuerySelector<T>(
   selector: string,
   node = document
@@ -24,4 +9,12 @@ export async function waitQuerySelector<T>(
     )
   }
   return obj
+}
+
+export async function getDescription() {
+  return await waitQuerySelector<HTMLParagraphElement>(".LinesEllipsis")
+}
+
+export async function getSakaneIcon() {
+  return await waitQuerySelector<HTMLImageElement>(".css-bky071 > img")
 }
