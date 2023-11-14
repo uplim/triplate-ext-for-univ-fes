@@ -47,7 +47,7 @@ async function main() {
   })
 
   console.error("アイコン画像が表示されていません")
-  console.error("文字サイズが規定値を超えています")
+  console.error("文字サイズが規定値を超えています。")
 }
 
 main().catch((e) => console.error(e))

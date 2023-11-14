@@ -1,33 +1,22 @@
-This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
+## Setup
+node.js 18以上が必要です
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-pnpm dev
-# or
-npm run dev
+```sh
+# pnpmコマンドが利用可能でない場合
+$ corepack prepare pnpm@8.10.3 --activate 
+# モジュールのインストール
+$ pnpm install
+# 開発コマンド
+$ pnpm dev
 ```
 
-Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `build/chrome-mv3-dev`.
+`build/chrome-mv3-dev`が生成されるので、それを開発中のChrome拡張機能として読み込んでください。以降は変更したら即時反映されます。  
+拡張機能の追加方法は、`chrome://extensions`にアクセスして、デベロッパーモードをオンにして、パッケージ化されていない拡張機能を読み込む、でいけます。
 
-You can start editing the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
+## 構成
+- `popup`ディレクトリ内に、ボタンを押した時に出てくるpopupがあります。styleはstylesディレクトリで、CSS Modulesです。
 
-For further guidance, [visit our Documentation](https://docs.plasmo.com/)
+## 注意点
+- 当日はma_ma_himaページで作業してもらうことになりますが、拡張機能開発中はプログラムからアクセスすることになるので、ミスるとアクセス過多でFirebaseが終わる可能性があります
+- `src/contents/main.ts`のmatchesを好きなURLに変更して、そのURL上で作業してください
 
-## Making production build
-
-Run the following:
-
-```bash
-pnpm build
-# or
-npm run build
-```
-
-This should create a production bundle for your extension, ready to be zipped and published to the stores.
-
-## Submit to the webstores
-
-The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
