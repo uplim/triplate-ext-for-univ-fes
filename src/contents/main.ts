@@ -14,7 +14,7 @@ async function init() {
   // 画像の参照を壊す
   const img = await getSakaneIcon()
   img.srcset = ""
-  img.src = ""
+  img.src = " "
 
   // フォントサイズを壊す
   const description = await getDescription()
@@ -39,11 +39,15 @@ async function main() {
     if (message !== "check") return
 
     check().then((result) => {
+      if (result.every((e) => e === "passed")) console.clear()
       sendResponse(result)
     })
 
     return true
   })
+
+  console.error("アイコン画像が表示されていません")
+  console.error("文字サイズが規定値を超えています")
 }
 
 main().catch((e) => console.error(e))
