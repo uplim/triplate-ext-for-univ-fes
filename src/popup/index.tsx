@@ -13,8 +13,7 @@ function IndexPopup() {
     "failed"
   ])
 
-  // todo: リファクタ
-  function checkContents() {
+  const checkContents: MouseEventHandler<HTMLButtonElement> = () => {
     setIsLoading(true)
 
     chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
