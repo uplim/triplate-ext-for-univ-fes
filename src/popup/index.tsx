@@ -1,29 +1,30 @@
-import { useEffect, useState } from "react"
+import { useState, type MouseEventHandler } from "react"
+
+import { useStorage } from "@plasmohq/storage/hook"
 
 import "@/styles/style.css"
 
-function IndexPopup() {
-  const [checkFontSize, setCheckFontSize] = useState(false)
-  const [checkImg, setCheckImg] = useState(false)
+import type { CheckResultType } from "@/types/type"
 
-  useEffect(() => {
-    const handleMessage = (
-      request: { message: string },
-      _sender: any,
-      _sendResponse: any
-    ) => {
-      if (request.message === "font-size-changed") {
-        setCheckFontSize(true)
-      }
-      if (request.message === "img-changed") {
-        setCheckImg(true)
-      }
-    }
-    chrome.runtime.onMessage.addListener(handleMessage)
-    return () => {
-      chrome.runtime.onMessage.removeListener(handleMessage)
-    }
-  }, [])
+function IndexPopup() {
+  const [isLoading, setIsLoading] = useState(false)
+  const [checkResult, setCheckResult] = useStorage<CheckResultType>("check", [
+    "failed",
+    "failed"
+  ])
+
+  // todo: リファクタ
+  function checkContents() {
+    setIsLoading(true)
+
+    chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+      const res = (await chrome.tabs.sendMessage(tabs[0].id, {
+        message: "check"
+      })) as CheckResultType
+      setCheckResult(res)
+      setIsLoading(false)
+    })
+  }
 
   return (
     <div className="h-96 w-96 border-black bg-white">
@@ -31,14 +32,18 @@ function IndexPopup() {
         <h2>チェックポイント</h2>
         <div className="flex items-center">
           <p>①文字サイズが~~であること</p>
-          <span>{checkFontSize ? "⭕️" : "❌"}</span>
+          <span>{checkResult[0] === "passed" ? "⭕️" : "❌"}</span>
         </div>
 
         <div className="flex items-center">
           <p>②画像の参照が適切であること</p>
-          <span>{checkImg ? "⭕️" : "❌"}</span>
+          <span>{checkResult[1] === "passed" ? "⭕️" : "❌"}</span>
         </div>
       </div>
+      <div>{isLoading && <p>くるくる</p>}</div>
+      <button onClick={checkContents} disabled={isLoading}>
+        チェック
+      </button>
     </div>
   )
 }
