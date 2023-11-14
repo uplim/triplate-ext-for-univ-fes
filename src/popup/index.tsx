@@ -28,12 +28,12 @@ function IndexPopup() {
       <div>
         <h2>チェックポイント</h2>
         <div className={styles.checkpoint}>
-          <p>①文字サイズが~~であること</p>
+          <p>①自己紹介欄の文字サイズが1.4remになっていること</p>
           <span>{checkResult[0] === "passed" ? "⭕️" : "❌"}</span>
         </div>
 
         <div className={styles.checkpoint}>
-          <p>②画像の参照が適切であること</p>
+          <p>②アイコン画像が表示されていること</p>
           <span>{checkResult[1] === "passed" ? "⭕️" : "❌"}</span>
         </div>
       </div>
