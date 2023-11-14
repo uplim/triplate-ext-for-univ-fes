@@ -1,10 +1,8 @@
+import * as styles from "@/styles/style.module.css"
+import type { CheckResultType } from "@/types/type"
 import { useState, type MouseEventHandler } from "react"
 
 import { useStorage } from "@plasmohq/storage/hook"
-
-import "@/styles/style.css"
-
-import type { CheckResultType } from "@/types/type"
 
 function IndexPopup() {
   const [isLoading, setIsLoading] = useState(false)
@@ -26,15 +24,15 @@ function IndexPopup() {
   }
 
   return (
-    <div className="h-96 w-96 border-black bg-white">
+    <div className={styles.content}>
       <div>
         <h2>チェックポイント</h2>
-        <div className="flex items-center">
+        <div className={styles.checkpoint}>
           <p>①文字サイズが~~であること</p>
           <span>{checkResult[0] === "passed" ? "⭕️" : "❌"}</span>
         </div>
 
-        <div className="flex items-center">
+        <div className={styles.checkpoint}>
           <p>②画像の参照が適切であること</p>
           <span>{checkResult[1] === "passed" ? "⭕️" : "❌"}</span>
         </div>
