@@ -40,7 +40,7 @@ function IndexPopup() {
 
         <div className={styles.checkpoint}>
           <p className={styles.text}>②アイコン画像が表示されていること</p>
-          <span>{checkResult[1] === "failed" ? <img src={successedImage} alt="" />
+          <span>{checkResult[1] === "passed" ? <img src={successedImage} alt="" />
             : <img src={failedImage} alt="" />
 
           }</span>
