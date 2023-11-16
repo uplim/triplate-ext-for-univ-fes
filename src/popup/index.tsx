@@ -30,12 +30,16 @@ function IndexPopup() {
       <div>
         <h2>チェックポイント</h2>
         <div className={styles.checkpoint}>
-          <p className={styles.text}>①自己紹介欄の文字サイズが1.4remになっていること</p>
-          <span>{checkResult[0] === "passed" ? <img src={successedImage} alt="" />
-            : <img src={failedImage} alt="" />
-
-          }</span>
-
+          <p className={styles.text}>
+            ①自己紹介欄の文字サイズが1.4remになっていること
+          </p>
+          <span>
+            {checkResult[0] === "passed" ? (
+              <img src={successedImage} alt="" />
+            ) : (
+              <img src={failedImage} alt="" />
+            )}
+          </span>
         </div>
 
         <div className={styles.checkpoint}>
@@ -50,15 +54,11 @@ function IndexPopup() {
         <button onClick={checkContents} disabled={isLoading}>
           CHECK
         </button>
-        <div>{isLoading && <div className={styles.loader}>Loading...</div>
-        }
+        <div>
+          {isLoading && <div className={styles.loader}>Loading...</div>}
         </div>
       </div>
-
-
-
     </div>
-
   )
 }
 
