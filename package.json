@@ -38,10 +38,24 @@
     ],
     "permissions": [
       "tabs"
+    ],
+    "web_accessible_resources": [
+      {
+         "resources": [
+          "assets/pic*.png",
+          "assets/failed.svg",
+          "assets/successed.svg"
+
+        ],
+        "matches": [
+          "https://*/*"
+        ]
+      }
     ]
   },
   "engines": {
     "node": ">=18",
     "pnpm": ">=8"
   }
+   
 }
