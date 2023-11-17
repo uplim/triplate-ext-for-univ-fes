@@ -13,7 +13,7 @@ async function init() {
   // 画像の参照を壊す
   const img = await getSakaneIcon()
   img.srcset = ""
-  img.src = " "
+  img.src = "htttps://pbs.twimg.com/profile_images/1614791970609852416/-QCxPLE6_400x400.jpg"
 
   // フォントサイズを壊す
   const description = await getDescription()
