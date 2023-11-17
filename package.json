@@ -1,6 +1,6 @@
 {
   "name": "triplate-ext-for-univ-fes",
-  "displayName": "Triplate ext for univ fes",
+  "displayName": "Triplate Test Tools",
   "version": "0.0.1",
   "description": "A basic Plasmo extension.",
   "author": "Uplim. <uplim.info@gmail.com>",
@@ -56,6 +56,12 @@
   "engines": {
     "node": ">=18",
     "pnpm": ">=8"
-  }
-   
+  },
+  "targets": {
+    "default": {
+      "engines": {
+        "browsers": "last 2 versions, not dead, > 0.2%"
+      }
+    }
+  }  
 }

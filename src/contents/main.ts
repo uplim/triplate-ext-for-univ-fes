@@ -1,8 +1,7 @@
+import { descriptionFontSize, sakaneIcon } from "@/contents/constants"
 import { getDescription, getSakaneIcon } from "@/contents/utils"
 import type { CheckResultType } from "@/types/type"
 import type { PlasmoCSConfig } from "plasmo"
-
-import { descriptionFontSize, sakaneIcon } from "./constants"
 
 export const config: PlasmoCSConfig = {
   matches: ["https://triplate.app/ma_ma_hima**"],
@@ -47,7 +46,7 @@ async function main() {
   })
 
   console.error("アイコン画像が表示されていません")
-  console.error("文字サイズが規定値を超えています。")
+  console.error("文字サイズが規定値を超えています")
 }
 
 main().catch((e) => console.error(e))
