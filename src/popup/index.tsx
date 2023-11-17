@@ -28,7 +28,7 @@ function IndexPopup() {
   return (
     <div className={styles.content}>
       <div>
-        <h2>チェックポイント</h2>
+        <h2>テスト項目</h2>
         <div className={styles.checkpoint}>
           <p className={styles.text}>① アイコン画像が表示されていること</p>
           <span>
